@@ -36,7 +36,7 @@ public class ReceitaServiceImpl implements ReceitaService {
 
     @Override
     @Transactional(readOnly = true)
-    public ReceitaResponseDTO buscarPorId(Long id) {
+    public ReceitaResponseDTO buscarPorId(String id) {
         log.debug("Buscando receita por ID: {}", id);
         return repository.findById(id)
                 .map(mapper::toResponseDTO)
@@ -55,7 +55,7 @@ public class ReceitaServiceImpl implements ReceitaService {
     @Override
     @Transactional
     @CacheEvict(value = "receitas", allEntries = true)
-    public ReceitaResponseDTO atualizarReceita(Long id, ReceitaRequestDTO dto) {
+    public ReceitaResponseDTO atualizarReceita(String id, ReceitaRequestDTO dto) {
         log.info("Atualizando receita ID: {}", id);
         return repository.findById(id)
                 .map(existing -> {
@@ -69,7 +69,7 @@ public class ReceitaServiceImpl implements ReceitaService {
     @Override
     @Transactional
     @CacheEvict(value = "receitas", allEntries = true)
-    public void excluirReceita(Long id) {
+    public void excluirReceita(String id) {
         log.warn("Excluindo receita ID: {}", id);
         Receita receita = repository.findById(id)
                 .orElseThrow(() -> new ReceitaNotFoundException(id));

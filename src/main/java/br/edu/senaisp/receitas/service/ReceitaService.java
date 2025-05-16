@@ -7,8 +7,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface ReceitaService {
     ReceitaResponseDTO criarReceita(ReceitaRequestDTO dto);
-    ReceitaResponseDTO buscarPorId(Long id);
+    ReceitaResponseDTO buscarPorId(String id);
     Page<ReceitaResponseDTO> listarReceitas(Pageable pageable);
-    ReceitaResponseDTO atualizarReceita(Long id, ReceitaRequestDTO dto);
-    void excluirReceita(Long id);
+    ReceitaResponseDTO atualizarReceita(String id, ReceitaRequestDTO dto);
+    void excluirReceita(String id);
 }

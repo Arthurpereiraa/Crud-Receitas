@@ -1,24 +1,23 @@
 package br.edu.senaisp.receitas.model;
 
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import io.swagger.v3.oas.annotations.media.Schema;
 
-@Entity
-@Table(name = "receitas")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Document(collection = "receitas")
 public class Receita {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Schema(description = "ID único da receita", example = "1")
-    private Long id;
+    @Schema(description = "ID único da receita", example = "605c72ef4f1a2563a8f1b234")
+    private String id;
 
     @NotBlank(message = "Título é obrigatório")
     @Size(max = 100, message = "Título deve ter no máximo 100 caracteres")
@@ -42,7 +41,6 @@ public class Receita {
     private String imagemUrl;
 
     @NotNull(message = "Categoria é obrigatória")
-    @Enumerated(EnumType.STRING)
     @Schema(description = "Categoria da receita", example = "DOCE")
     private CategoriaReceita categoria;
 }

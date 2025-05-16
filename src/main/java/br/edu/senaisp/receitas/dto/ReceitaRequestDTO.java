@@ -34,4 +34,5 @@ public record ReceitaRequestDTO(
         @NotNull(message = "Categoria é obrigatória")
         @Schema(description = "Categoria da receita", example = "DOCE", requiredMode = Schema.RequiredMode.REQUIRED)
         CategoriaReceita categoria
+
 ) {}

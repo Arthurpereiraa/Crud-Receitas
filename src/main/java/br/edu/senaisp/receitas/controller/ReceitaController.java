@@ -38,8 +38,8 @@ public class ReceitaController {
     @ApiResponse(responseCode = "200", description = "Receita encontrada")
     @ApiResponse(responseCode = "404", description = "Receita não encontrada")
     public ResponseEntity<ReceitaResponseDTO> buscarPorId(
-            @Parameter(description = "ID da receita", example = "1")
-            @PathVariable Long id
+            @Parameter(description = "ID da receita", example = "605c72ef4f1a2563a8f1b234")
+            @PathVariable String id
     ) {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
@@ -58,7 +58,7 @@ public class ReceitaController {
     @ApiResponse(responseCode = "200", description = "Receita atualizada")
     @ApiResponse(responseCode = "404", description = "Receita não encontrada")
     public ResponseEntity<ReceitaResponseDTO> atualizar(
-            @PathVariable Long id,
+            @PathVariable String id,
             @Valid @RequestBody ReceitaRequestDTO dto
     ) {
         return ResponseEntity.ok(service.atualizarReceita(id, dto));
@@ -69,7 +69,7 @@ public class ReceitaController {
     @Operation(summary = "Excluir receita")
     @ApiResponse(responseCode = "204", description = "Receita excluída")
     @ApiResponse(responseCode = "404", description = "Receita não encontrada")
-    public void excluir(@PathVariable Long id) {
+    public void excluir(@PathVariable String id) {
         service.excluirReceita(id);
     }
 }

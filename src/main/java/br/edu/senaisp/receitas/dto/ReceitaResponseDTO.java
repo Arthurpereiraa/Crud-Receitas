@@ -7,8 +7,8 @@ import lombok.Builder;
 @Builder
 public record ReceitaResponseDTO(
 
-        @Schema(description = "ID único da receita", example = "1")
-        Long id,
+        @Schema(description = "ID único da receita", example = "605c72ef4f1a2563a8f1b234")
+        String id,
 
         @Schema(description = "Título da receita", example = "Bolo de Chocolate")
         String titulo,
