@@ -1,4 +1,4 @@
-package br.edu.senaisp.receitas.service.impl;
+package br.edu.senaisp.receitas.service;
 
 import br.edu.senaisp.receitas.dto.ReceitaRequestDTO;
 import br.edu.senaisp.receitas.dto.ReceitaResponseDTO;

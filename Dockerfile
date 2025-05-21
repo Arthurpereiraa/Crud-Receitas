@@ -1,14 +1,20 @@
-# Use uma imagem base oficial do OpenJDK 17 (ou a versão que seu projeto usa)
-FROM openjdk:17-jdk-slim
+# Stage 1: Build
+FROM maven:3.8.4-openjdk-17 AS build
 
-# Defina o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copie o arquivo JAR da aplicação para o container
-COPY target/receitas-backend.jar app.jar
+COPY pom.xml .
+COPY src ./src
 
-# Exponha a porta que a aplicação usa
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Comando para rodar a aplicação
-ENTRYPOINT ["java","-jar","app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
