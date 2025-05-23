@@ -95,7 +95,6 @@ Crud-Receitas/
 - Java
 - Spring Boot (Spring Web, Spring Data MongoDB)
 - MongoDB
-- Spring Security (opcional)
 - Dependências para upload de arquivos (por exemplo, Spring Multipart)
 - Ferramentas de configuração (application.properties/.yml, dotenv se necessário)
 
