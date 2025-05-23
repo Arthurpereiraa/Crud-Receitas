@@ -156,8 +156,9 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ---
 
 ## 📬 Contato
-
+**Arthur Heleno** - arthurhelenobritocosta@gmail.com
 **Arthur Pereira** – arthurpsf8@gmail.com
 **Nicole** - nicole.v.nascimento@gmail.com
 **Ana Clara** - anacs.lima007@gmail.com
+
 Link do projeto: [https://github.com/Arthurpereiraa/Crud-Receitas](https://github.com/Arthurpereiraa/Crud-Receitas)
