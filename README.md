@@ -157,5 +157,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📬 Contato
 
-**Arthur Pereira** – arthur.pereira@email.com  
+**Arthur Pereira** – arthurpsf8@gmail.com  
 Link do projeto: [https://github.com/Arthurpereiraa/Crud-Receitas](https://github.com/Arthurpereiraa/Crud-Receitas)
