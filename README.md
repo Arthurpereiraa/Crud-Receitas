@@ -1,40 +1,59 @@
 # 🍳 Crud de Receitas
 
-Um aplicativo web completo para gerenciamento de receitas culinárias, com front-end moderno em **React.js** e back-end robusto em **Node.js**, **Express** e **MongoDB**.
+Um sistema completo de gerenciamento de receitas culinárias, com arquitetura full stack: **front-end em React.js** e **back-end em Node.js/Express/MongoDB**. Permite criar, visualizar, editar e excluir receitas, com imagens, ingredientes, modo de preparo e categorização (doce/salgado). 
 
 ---
 
-## 📋 Sobre o Projeto
+## 📚 Sumário
 
-CRUD (Create, Read, Update, Delete) de receitas culinárias: crie, visualize, edite e exclua receitas, com imagens, ingredientes, modo de preparo e categorização (doce/salgado). Arquitetura separada entre front-end e back-end, facilitando manutenção e escalabilidade.
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Arquitetura & Estrutura de Pastas](#arquitetura--estrutura-de-pastas)
+- [Funcionalidades Detalhadas](#funcionalidades-detalhadas)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Guia de Instalação (Passo a Passo)](#guia-de-instalação-passo-a-passo)
+- [Como Usar](#como-usar)
+- [Configuração de Ambiente](#configuração-de-ambiente)
+- [Principais Endpoints da API](#principais-endpoints-da-api)
+- [Fluxo de Desenvolvimento & Contribuição](#fluxo-de-desenvolvimento--contribuição)
+- [Licença](#licença)
+- [Contato](#contato)
 
 ---
 
-## 🗂️ Estrutura de Pastas
+## Sobre o Projeto
+
+O **Crud de Receitas** foi desenvolvido para facilitar o registro, consulta e organização de receitas culinárias. Ideal para quem deseja manter um acervo digital de receitas, com interface moderna e intuitiva.
+
+- **Front-end React**: Interface amigável para interação com as receitas.
+- **Back-end Express/MongoDB**: API RESTful robusta para persistência e manipulação dos dados.
+
+---
+
+## Arquitetura & Estrutura de Pastas
 
 ```text
 Crud-Receitas/
 │
 ├── backend/                  # API RESTful (Node.js, Express, MongoDB)
 │   ├── src/
-│   │   ├── controllers/      # Endpoints (ex: RecipeController.js)
-│   │   ├── models/           # Modelos do banco (ex: Recipe.js)
-│   │   ├── routes/           # Rotas da API (ex: recipeRoutes.js)
-│   │   ├── config/           # Configs (ex: database.js)
-│   │   └── app.js            # Inicialização Express
+│   │   ├── controllers/      # Lógica dos endpoints (RecipeController.js, etc)
+│   │   ├── models/           # Modelos Mongoose (Recipe.js, etc)
+│   │   ├── routes/           # Definição das rotas (recipeRoutes.js, etc)
+│   │   ├── config/           # Configurações (database.js, etc)
+│   │   └── app.js            # Inicialização do app Express
 │   ├── package.json
-│   └── .env                  # Variáveis ambiente
+│   └── .env
 │
-├── frontend/                 # App React.js
+├── frontend/                 # Aplicação React.js
 │   ├── public/
 │   ├── src/
-│   │   ├── components/       # Componentes reutilizáveis
-│   │   ├── pages/            # Páginas principais
-│   │   ├── services/         # Serviços API
-│   │   ├── App.js
-│   │   └── index.js
+│   │   ├── components/       # Componentes reutilizáveis (RecipeCard, RecipeForm, etc)
+│   │   ├── pages/            # Páginas principais (Home, Details, Create, Edit, etc)
+│   │   ├── services/         # Serviços de integração com a API (api.js, etc)
+│   │   ├── App.js            # Componente principal
+│   │   └── index.js          # Ponto de entrada
 │   ├── package.json
-│   └── .env                  # URL da API
+│   └── .env
 │
 ├── README.md
 └── LICENSE
@@ -42,45 +61,49 @@ Crud-Receitas/
 
 ---
 
-## ✨ Funcionalidades
-
-- Visualização de receitas com imagens
-- Categorização (doce/salgado)
-- Detalhes: ingredientes, modo de preparo, descrição e imagem
-- Adição, edição e remoção de receitas
-- Integração front-end & back-end via API RESTful
-- Persistência com MongoDB
-
----
-
-## 🎯 Exemplos de Receitas
-
-- Bolo de Chocolate
-- Pão de Queijo
-- Lasanha à Bolonhesa
-- Pudim de Leite
-
----
-
-## 🚀 Tecnologias Utilizadas
+## Funcionalidades Detalhadas
 
 ### Front-end
-- React.js
+
+- Visualização de todas as receitas cadastradas, com filtro por categoria (doce/salgado).
+- Página de detalhes de cada receita.
+- Cadastro de nova receita, incluindo upload de imagem.
+- Edição e exclusão de receitas existentes.
+- Validação de formulário e feedback ao usuário.
+- Integração completa com a API através do serviço centralizado.
+
+### Back-end
+
+- API RESTful estruturada em MVC.
+- Endpoints seguros para CRUD de receitas.
+- Upload e armazenamento de imagens (local ou serviço externo).
+- Validação e sanitização dos dados recebidos.
+- Conexão com MongoDB usando Mongoose.
+- Configuração por variáveis de ambiente via dotenv.
+
+---
+
+## Tecnologias Utilizadas
+
+### Front-end
+
+- React.js (Hooks, Context API, React Router)
 - JavaScript (ES6+)
 - CSS Modules ou Styled Components
-- HTML5
 - Axios
 
 ### Back-end
+
 - Node.js
 - Express.js
 - MongoDB & Mongoose
+- Multer (upload de imagens)
 - CORS
 - Dotenv
 
 ---
 
-## 📥 Como Instalar
+## Guia de Instalação (Passo a Passo)
 
 ### 1. Clone o repositório
 
@@ -89,18 +112,23 @@ git clone https://github.com/Arthurpereiraa/Crud-Receitas.git
 cd Crud-Receitas
 ```
 
-### 2. Configure o Back-end
+### 2. Configurando o Back-end
 
 ```bash
 cd backend
-cp .env.example .env     # Configure as variáveis de ambiente (ex: URL do MongoDB)
+cp .env.example .env     # Configure as variáveis de ambiente (MongoDB, etc)
 npm install
 npm run dev              # ou npm start
 ```
-
 > A API estará disponível em `http://localhost:5000`
 
-### 3. Configure o Front-end
+**Exemplo de .env:**
+```
+MONGODB_URI=mongodb://localhost:27017/crud_receitas
+PORT=5000
+```
+
+### 3. Configurando o Front-end
 
 ```bash
 cd ../frontend
@@ -108,57 +136,63 @@ cp .env.example .env     # Configure a URL da API (REACT_APP_API_URL)
 npm install
 npm start
 ```
-
 > O front-end estará disponível em `http://localhost:3000`
 
+**Exemplo de .env:**
+```
+REACT_APP_API_URL=http://localhost:5000
+```
+
 ---
 
-## 💻 Como Usar
+## Como Usar
 
 1. Acesse `http://localhost:3000`
-2. Visualize todas as receitas na página inicial
-3. Clique em uma receita para ver os detalhes
-4. Adicione novas receitas pelo botão **"Adicionar Receita"**
-5. Edite ou exclua receitas conforme desejar
+2. Visualize todas as receitas na tela inicial.
+3. Clique em uma receita para ver os detalhes.
+4. Utilize o botão **"Adicionar Receita"** para cadastrar novas receitas.
+5. Edite ou exclua receitas já cadastradas conforme desejar.
 
 ---
 
-## 🔗 Integração Front-end x Back-end
+## Configuração de Ambiente
 
-O front-end consome a API RESTful do back-end. Endpoints principais:
+- O arquivo `.env.example` em ambos os diretórios (`backend/`, `frontend/`) serve de modelo para configuração local.
+- Para produção, utilize variáveis de ambiente seguras e serviços adequados para MongoDB e hospedagem de imagens.
+
+---
+
+## Principais Endpoints da API
 
 - `GET /recipes` – Lista todas as receitas
-- `GET /recipes/:id` – Detalhe de uma receita
-- `POST /recipes` – Cria nova receita
-- `PUT /recipes/:id` – Edita receita
-- `DELETE /recipes/:id` – Remove receita
-
-Configure a URL da API no `.env` do front-end para integração correta.
+- `GET /recipes/:id` – Detalhes de uma receita
+- `POST /recipes` – Cria nova receita (requer campos: nome, ingredientes, modo de preparo, categoria, imagem)
+- `PUT /recipes/:id` – Atualiza uma receita existente
+- `DELETE /recipes/:id` – Remove uma receita
 
 ---
 
-## 🤝 Contribuindo
-
-Contribuições são sempre bem-vindas!
+## Fluxo de Desenvolvimento & Contribuição
 
 1. Faça um **fork** do projeto
-2. Crie uma branch (`git checkout -b feature/NovaFeature`)
-3. Faça commit (`git commit -m 'Adicionando nova feature'`)
-4. Push na branch (`git push origin feature/NovaFeature`)
-5. Abra um **Pull Request**
+2. Crie uma branch (`git checkout -b feature/NomeDaFeature`)
+3. Faça commit das alterações (`git commit -m 'Descrição da feature'`)
+4. Push para sua branch (`git push origin feature/NomeDaFeature`)
+5. Abra um **Pull Request** detalhando sua contribuição
 
 ---
 
-## 📝 Licença
+## Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Distribuído sob licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais informações.
 
 ---
 
-## 📬 Contato
-**Arthur Heleno** - arthurhelenobritocosta@gmail.com
-**Arthur Pereira** – arthurpsf8@gmail.com
-**Nicole** - nicole.v.nascimento@gmail.com
-**Ana Clara** - anacs.lima007@gmail.com
+## Contato
 
-Link do projeto: [https://github.com/Arthurpereiraa/Crud-Receitas](https://github.com/Arthurpereiraa/Crud-Receitas)
+- **Arthur Heleno** - arthurhelenobritocosta@gmail.com
+- **Arthur Pereira** – arthurpsf8@gmail.com
+- **Nicole** - nicole.v.nascimento@gmail.com
+- **Ana Clara** - anacs.lima007@gmail.com
+
+Projeto no GitHub: [https://github.com/Arthurpereiraa/Crud-Receitas](https://github.com/Arthurpereiraa/Crud-Receitas)
