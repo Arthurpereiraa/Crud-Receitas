@@ -1,6 +1,6 @@
 # 🍳 Crud de Receitas
 
-Um sistema completo de gerenciamento de receitas culinárias, com arquitetura full stack: **front-end em React.js** e **back-end em Node.js/Express/MongoDB**. Permite criar, visualizar, editar e excluir receitas, com imagens, ingredientes, modo de preparo e categorização (doce/salgado). 
+Um sistema completo de gerenciamento de receitas culinárias, com arquitetura full stack: **front-end em React-Native** e **back-end em Node.js/Express/MongoDB**. Permite criar, visualizar, editar e excluir receitas, com imagens, ingredientes, modo de preparo e categorização (doce/salgado). 
 
 ---
 
@@ -24,7 +24,7 @@ Um sistema completo de gerenciamento de receitas culinárias, com arquitetura fu
 
 O **Crud de Receitas** foi desenvolvido para facilitar o registro, consulta e organização de receitas culinárias. Ideal para quem deseja manter um acervo digital de receitas, com interface moderna e intuitiva.
 
-- **Front-end React**: Interface amigável para interação com as receitas.
+- **Front-end React-Native**: Interface amigável para interação com as receitas.
 - **Back-end Express/MongoDB**: API RESTful robusta para persistência e manipulação dos dados.
 
 ---
@@ -44,7 +44,7 @@ Crud-Receitas/
 │   ├── package.json
 │   └── .env
 │
-├── frontend/                 # Aplicação React.js
+├── frontend/                 # Aplicação React-Native
 │   ├── public/
 │   ├── src/
 │   │   ├── components/       # Componentes reutilizáveis (RecipeCard, RecipeForm, etc)
@@ -87,9 +87,9 @@ Crud-Receitas/
 
 ### Front-end
 
-- React.js (Hooks, Context API, React Router)
+- React-Native (Hooks, Context API, React Navigation)
 - JavaScript (ES6+)
-- CSS Modules ou Styled Components
+- Styled Components ou CSS-in-JS
 - Axios
 
 ### Back-end
