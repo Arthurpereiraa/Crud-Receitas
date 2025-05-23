@@ -1,6 +1,6 @@
 # 🍳 Crud de Receitas
 
-Um sistema completo de gerenciamento de receitas culinárias, com arquitetura full stack: **front-end em React.js** e **back-end em Node.js/Express/MongoDB**. Permite criar, visualizar, editar e excluir receitas, com imagens, ingredientes, modo de preparo e categorização (doce/salgado). 
+Um sistema completo de gerenciamento de receitas culinárias, com arquitetura full stack: **front-end em React-Native** e **back-end em Java (Spring Boot)/MongoDB**. Permite criar, visualizar, editar e excluir receitas, com imagens, ingredientes, modo de preparo e categorização (doce/salgado).
 
 ---
 
@@ -24,8 +24,8 @@ Um sistema completo de gerenciamento de receitas culinárias, com arquitetura fu
 
 O **Crud de Receitas** foi desenvolvido para facilitar o registro, consulta e organização de receitas culinárias. Ideal para quem deseja manter um acervo digital de receitas, com interface moderna e intuitiva.
 
-- **Front-end React**: Interface amigável para interação com as receitas.
-- **Back-end Express/MongoDB**: API RESTful robusta para persistência e manipulação dos dados.
+- **Front-end React-Native**: Interface amigável para interação com as receitas.
+- **Back-end Java (Spring Boot)/MongoDB**: API RESTful robusta para persistência e manipulação dos dados.
 
 ---
 
@@ -34,26 +34,24 @@ O **Crud de Receitas** foi desenvolvido para facilitar o registro, consulta e or
 ```text
 Crud-Receitas/
 │
-├── backend/                  # API RESTful (Node.js, Express, MongoDB)
+├── backend/                         # API RESTful (Java, Spring Boot, MongoDB)
 │   ├── src/
-│   │   ├── controllers/      # Lógica dos endpoints (RecipeController.js, etc)
-│   │   ├── models/           # Modelos Mongoose (Recipe.js, etc)
-│   │   ├── routes/           # Definição das rotas (recipeRoutes.js, etc)
-│   │   ├── config/           # Configurações (database.js, etc)
-│   │   └── app.js            # Inicialização do app Express
-│   ├── package.json
-│   └── .env
+│   │   ├── main/
+│   │   │   ├── java/com/seuprojeto/ # Código-fonte Java (controllers, models, services, repositories)
+│   │   │   └── resources/           # Configurações (application.properties, etc)
+│   ├── pom.xml                      # Gerenciamento de dependências Maven
+│   └── .env.example                 # Exemplo de variáveis de ambiente (se necessário)
 │
-├── frontend/                 # Aplicação React.js
+├── frontend/                        # Aplicação React-Native
 │   ├── public/
 │   ├── src/
-│   │   ├── components/       # Componentes reutilizáveis (RecipeCard, RecipeForm, etc)
-│   │   ├── pages/            # Páginas principais (Home, Details, Create, Edit, etc)
-│   │   ├── services/         # Serviços de integração com a API (api.js, etc)
-│   │   ├── App.js            # Componente principal
-│   │   └── index.js          # Ponto de entrada
+│   │   ├── components/              # Componentes reutilizáveis (RecipeCard, RecipeForm, etc)
+│   │   ├── pages/                   # Páginas principais (Home, Details, Create, Edit, etc)
+│   │   ├── services/                # Serviços de integração com a API (api.js, etc)
+│   │   ├── App.js                   # Componente principal
+│   │   └── index.js                 # Ponto de entrada
 │   ├── package.json
-│   └── .env
+│   └── .env.example
 │
 ├── README.md
 └── LICENSE
@@ -78,8 +76,8 @@ Crud-Receitas/
 - Endpoints seguros para CRUD de receitas.
 - Upload e armazenamento de imagens (local ou serviço externo).
 - Validação e sanitização dos dados recebidos.
-- Conexão com MongoDB usando Mongoose.
-- Configuração por variáveis de ambiente via dotenv.
+- Conexão com MongoDB usando Spring Data.
+- Configuração por variáveis de ambiente ou via `application.properties`.
 
 ---
 
@@ -87,19 +85,18 @@ Crud-Receitas/
 
 ### Front-end
 
-- React.js (Hooks, Context API, React Router)
+- React-Native (Hooks, Context API, React Navigation)
 - JavaScript (ES6+)
-- CSS Modules ou Styled Components
+- Styled Components ou CSS-in-JS
 - Axios
 
 ### Back-end
 
-- Node.js
-- Express.js
-- MongoDB & Mongoose
-- Multer (upload de imagens)
-- CORS
-- Dotenv
+- Java
+- Spring Boot (Spring Web, Spring Data MongoDB)
+- MongoDB
+- Dependências para upload de arquivos (por exemplo, Spring Multipart)
+- Ferramentas de configuração (application.properties/.yml, dotenv se necessário)
 
 ---
 
@@ -116,16 +113,16 @@ cd Crud-Receitas
 
 ```bash
 cd backend
-cp .env.example .env     # Configure as variáveis de ambiente (MongoDB, etc)
-npm install
-npm run dev              # ou npm start
+# Configure o arquivo application.properties com as credenciais do MongoDB e porta desejada
+# ou utilize .env.example se preferir variáveis de ambiente
+./mvnw spring-boot:run
 ```
-> A API estará disponível em `http://localhost:5000`
+> A API estará disponível em `http://localhost:8080` (ou porta definida)
 
-**Exemplo de .env:**
+**Exemplo de application.properties:**
 ```
-MONGODB_URI=mongodb://localhost:27017/crud_receitas
-PORT=5000
+spring.data.mongodb.uri=mongodb://localhost:27017/crud_receitas
+server.port=8080
 ```
 
 ### 3. Configurando o Front-end
@@ -140,7 +137,7 @@ npm start
 
 **Exemplo de .env:**
 ```
-REACT_APP_API_URL=http://localhost:5000
+REACT_APP_API_URL=http://localhost:8080
 ```
 
 ---
@@ -157,7 +154,7 @@ REACT_APP_API_URL=http://localhost:5000
 
 ## Configuração de Ambiente
 
-- O arquivo `.env.example` em ambos os diretórios (`backend/`, `frontend/`) serve de modelo para configuração local.
+- O arquivo `.env.example` ou `application.properties.example` em ambos os diretórios (`backend/`, `frontend/`) serve de modelo para configuração local.
 - Para produção, utilize variáveis de ambiente seguras e serviços adequados para MongoDB e hospedagem de imagens.
 
 ---
@@ -165,10 +162,10 @@ REACT_APP_API_URL=http://localhost:5000
 ## Principais Endpoints da API
 
 - `GET /recipes` – Lista todas as receitas
-- `GET /recipes/:id` – Detalhes de uma receita
+- `GET /recipes/{id}` – Detalhes de uma receita
 - `POST /recipes` – Cria nova receita (requer campos: nome, ingredientes, modo de preparo, categoria, imagem)
-- `PUT /recipes/:id` – Atualiza uma receita existente
-- `DELETE /recipes/:id` – Remove uma receita
+- `PUT /recipes/{id}` – Atualiza uma receita existente
+- `DELETE /recipes/{id}` – Remove uma receita
 
 ---
 
@@ -196,3 +193,4 @@ Distribuído sob licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais infor
 - **Ana Clara** - anacs.lima007@gmail.com
 
 Projeto no GitHub: [https://github.com/Arthurpereiraa/Crud-Receitas](https://github.com/Arthurpereiraa/Crud-Receitas)
+```
