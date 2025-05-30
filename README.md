@@ -193,4 +193,3 @@ Distribuído sob licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais infor
 - **Ana Clara** - anacs.lima007@gmail.com
 
 Projeto no GitHub: [https://github.com/Arthurpereiraa/Crud-Receitas](https://github.com/Arthurpereiraa/Crud-Receitas)
-```
